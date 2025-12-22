@@ -24,7 +24,14 @@
 - Вы играете за лису
 - AI играет за гусей
 - Ходы делаются кликами мыши
+- Чтобы запустить в этом режиме:
+`cd C:\Users\Windows\Desktop\VSU\ООП\FoxAndGeese\target\classes`
+` java ru.vsu.cs.maximova.Main`
+
 ### 2. Режим наблюдателя
 - Запуск с аргументом "я наблюдатель"
 - Оба игрока - AI
 - Автоматическая игра с задержкой между ходами
+- Чтобы запустить в этом режиме:
+`cd C:\Users\Windows\Desktop\VSU\ООП\FoxAndGeese\target\classes`
+` java ru.vsu.cs.maximova.Main "я наблюдатель"`
