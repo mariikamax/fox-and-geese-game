@@ -28,7 +28,8 @@ public class Game {
     private int movesWithoutCapture;
     private GameConfig config;
 
-    public Game(GameConfig config, boolean interactive) {
+
+    public Game(GameConfig config, boolean interactive, boolean humanPlaysAsFox) {
         this.config = config;
         this.board = new Board();
         this.validator = new MoveValidator(board);
@@ -36,14 +37,23 @@ public class Game {
         this.gameOver = false;
 
         if (interactive) {
-            this.foxPlayer = new HumanPlayer(PieceType.FOX);
-            this.geesePlayer = new AIPlayer(PieceType.GOOSE, config.getAiThinkingTimeMs());
+            if (humanPlaysAsFox) {
+                this.foxPlayer = new HumanPlayer(PieceType.FOX);
+                this.geesePlayer = new AIPlayer(PieceType.GOOSE, config.getAiThinkingTimeMs());
+            } else {
+                this.foxPlayer = new AIPlayer(PieceType.FOX, config.getAiThinkingTimeMs());
+                this.geesePlayer = new HumanPlayer(PieceType.GOOSE);
+            }
         } else {
             this.foxPlayer = new AIPlayer(PieceType.FOX, config.getAiThinkingTimeMs());
             this.geesePlayer = new AIPlayer(PieceType.GOOSE, config.getAiThinkingTimeMs());
         }
 
         this.currentPlayer = geesePlayer;
+    }
+
+    public Game(GameConfig config, boolean interactive) {
+        this(config, interactive, true);
     }
 
     /**
